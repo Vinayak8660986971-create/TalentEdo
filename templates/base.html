@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Talentedo</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}"
+                alt="Talentedo Logo"
+                style="height: 80px;">
+            </a>
+            <img src="/static/logo.png" alt="Talentedo Logo">
+        </div>
+        <div class="menu">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/courses">Courses</a>
+            <a href="/services">Services</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/whychoose">Placements</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </nav>
+
+</header>
+{% block content %}{% endblock %}
+<footer><b>
+    © 2026 Talentedo</b>
+</footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

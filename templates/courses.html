@@ -1,0 +1,486 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+
+/* ===== Section Styling ===== */
+
+.section {
+    padding: 40px 20px;
+}
+
+.main-course-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* ===== Courses Grid ===== */
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* ===== Course Card ===== */
+
+.course-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.course-box:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* ===== Button ===== */
+
+.btn-info {
+    background: #4b79ff;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn-info:hover {
+    background: #355de0;
+}
+
+/* ===== Hidden Info Box ===== */
+
+.info-box {
+    display: none;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.info-box ul {
+    padding-left: 18px;
+}
+
+.info-box.show {
+    display: block;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 992px) {
+    .courses {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .courses {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Placement Section ===== */
+
+.placement-title {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 60px;
+}
+
+.placement-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.degree-stream-box {
+    max-width: 900px;
+    width: 100%;
+}
+
+.sub-heading {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.pill-container {
+    margin-top: 15px;
+}
+
+.pill {
+    display: inline-block;
+    background: #eef3ff;
+    padding: 8px 14px;
+    border-radius: 20px;
+    margin: 6px;
+}
+
+/* ===== Popup Buttons ===== */
+
+.enquiry-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    background: #4b79ff;
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.whatsapp-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    background: #25D366;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.enquiry-btn:hover{
+    transform:translateY(-3px);
+    background: #355de6;
+}
+
+.whatsapp-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* ===== Popup Form ===== */
+
+.popup-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+}
+
+.popup-box{
+background:white;
+padding:30px;
+width:380px;
+border-radius:12px;
+position:relative;
+}
+
+.close-btn{
+position:absolute;
+right:15px;
+top:10px;
+font-size:25px;
+cursor:pointer;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.submit-btn{
+width:100%;
+padding:12px;
+background:#4b79ff;
+border:none;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
+
+
+<section class="section">
+
+<h2 class="main-course-title">
+Courses that Focussed on Job Trends
+</h2>
+
+<div class="courses">
+
+<!-- Python Fullstack -->
+<div class="course-box">
+<div class="card-title">Python Fullstack + Projects</div>
+<button class="btn-info" onclick="toggle('py')">More Info</button>
+<div id="py" class="info-box">
+<p>Learn complete frontend + backend development using Python, Django, APIs, and databases.</p>
+<ul>
+<li>Python, Django, REST APIs</li>
+<li>HTML, CSS, JavaScript</li>
+<li>MySQL, PostgreSQL</li>
+<li>Deployment & Cloud</li>
+</ul>
+</div>
+</div>
+
+<!-- DSA -->
+<div class="course-box">
+<div class="card-title">DSA + Projects</div>
+<button class="btn-info" onclick="toggle('dsa')">More Info</button>
+<div id="dsa" class="info-box">
+<p>Master problem solving to crack top tech interviews.</p>
+<ul>
+<li>Arrays, Linked Lists</li>
+<li>Graphs, Trees</li>
+<li>Dynamic Programming</li>
+<li>Time Complexity</li>
+</ul>
+</div>
+</div>
+
+<!-- System Design -->
+<div class="course-box">
+<div class="card-title">System Design + Projects</div>
+<button class="btn-info" onclick="toggle('sd')">More Info</button>
+<div id="sd" class="info-box">
+<p>Learn high-level and low-level design skills required for senior roles.</p>
+<ul>
+<li>Architecture Basics</li>
+<li>Load Balancing, Caching</li>
+<li>Design Scalable Systems</li>
+</ul>
+</div>
+</div>
+
+<!-- Data Engineering -->
+<div class="course-box">
+<div class="card-title">Data Engineering + Projects</div>
+<button class="btn-info" onclick="toggle('de')">More Info</button>
+<div id="de" class="info-box">
+<p>Work with pipelines, big data, cloud tools, and ETL processes.</p>
+<ul>
+<li>ETL Pipelines</li>
+<li>Spark, Hadoop</li>
+<li>SQL, Python</li>
+</ul>
+</div>
+</div>
+
+<!-- Data Analytics -->
+<div class="course-box">
+<div class="card-title">Data Analytics + Projects</div>
+<button class="btn-info" onclick="toggle('da')">More Info</button>
+<div id="da" class="info-box">
+<p>Learn to analyze and visualize data for business decisions.</p>
+<ul>
+<li>Excel, SQL</li>
+<li>Power BI, Tableau</li>
+<li>Data Visualization</li>
+</ul>
+</div>
+</div>
+
+<!-- Data Science -->
+<div class="course-box">
+<div class="card-title">Data Science + Projects</div>
+<button class="btn-info" onclick="toggle('ds')">More Info</button>
+<div id="ds" class="info-box">
+<p>Become a machine learning expert using Python and ML tools.</p>
+<ul>
+<li>Python, Pandas, NumPy</li>
+<li>Machine Learning</li>
+<li>Deep Learning Basics</li>
+</ul>
+</div>
+</div>
+
+<!-- Cloud -->
+<div class="course-box">
+<div class="card-title">Cloud Computing + Projects</div>
+<button class="btn-info" onclick="toggle('cc')">More Info</button>
+<div id="cc" class="info-box">
+<p>Master cloud platforms and deployment skills.</p>
+<ul>
+<li>AWS / Azure / GCP</li>
+<li>Docker, Kubernetes</li>
+<li>Deployment & Servers</li>
+</ul>
+</div>
+</div>
+
+<!-- MySQL -->
+<div class="course-box">
+<div class="card-title">MySQL + Projects</div>
+<button class="btn-info" onclick="toggle('mysql')">More Info</button>
+<div id="mysql" class="info-box">
+<p>Learn relational database concepts and SQL queries.</p>
+<ul>
+<li>SQL Queries</li>
+<li>Joins, Views</li>
+<li>Optimization</li>
+</ul>
+</div>
+</div>
+
+<!-- Testing -->
+<div class="course-box">
+<div class="card-title">Software Testing + Projects</div>
+<button class="btn-info" onclick="toggle('test')">More Info</button>
+<div id="test" class="info-box">
+<p>Learn automation testing with industry-standard tools.</p>
+<ul>
+<li>Selenium Automation</li>
+<li>Manual Testing</li>
+<li>Test Case Writing</li>
+</ul>
+</div>
+</div>
+
+<!-- Java -->
+<div class="course-box">
+<div class="card-title">Java Fullstack + Projects</div>
+<button class="btn-info" onclick="toggle('java')">More Info</button>
+<div id="java" class="info-box">
+<ul>
+<li>Core Java & Advanced Java</li>
+<li>Spring & Spring Boot</li>
+<li>Hibernate & JPA</li>
+<li>HTML, CSS, JavaScript</li>
+<li>MySQL Database</li>
+<li>REST APIs & Microservices</li>
+<li>Deployment & Cloud Basics</li>
+</ul>
+</div>
+</div>
+
+<!-- SAP -->
+<div class="course-box">
+<div class="card-title">SAP + Projects</div>
+<button class="btn-info" onclick="toggle('sap')">More Info</button>
+<div id="sap" class="info-box">
+<p>Global market leader in Enterprise Resource Planning (ERP) software.</p>
+<ul>
+<li>FICO</li>
+<li>MM</li>
+<li>SD</li>
+<li>HCM</li>
+<li>PP</li>
+<li>SAP S/4HANA for Cloud-Based</li>
+<li>Intelligent ERP Solutions</li>
+</ul>
+</div>
+</div>
+
+</div>
+</section>
+
+<h2 class="placement-title">Our Placement Statistics</h2>
+
+<div class="placement-container">
+
+<div class="degree-stream-box">
+
+<h3 class="sub-heading">Basic and Advanced Computer Courses</h3>
+
+<div class="pill-container">
+<span class="pill">Computer Fundamentals</span>
+<span class="pill">MS Word</span>
+<span class="pill">MS Excel</span>
+<span class="pill">MS PowerPoint</span>
+<span class="pill">Internet & Email</span>
+<span class="pill">Advanced Excel</span>
+<span class="pill">Google Tools</span>
+<span class="pill">Office Management</span>
+</div>
+
+<h3 class="sub-heading">Tally Courses</h3>
+
+<div class="pill-container">
+<span class="pill">Accounting Basics</span>
+<span class="pill">GST</span>
+<span class="pill">Tally Software</span>
+<span class="pill">Reports</span>
+</div>
+
+</div>
+</div>
+
+<a class="whatsapp-btn" href="https://wa.me/91XXXXXXXXXX" target="_blank">
+WhatsApp
+</a>
+
+<button class="enquiry-btn" onclick="openForm()">Enquiry</button>
+
+<div id="popupForm" class="popup-overlay">
+
+<div class="popup-box">
+
+<span class="close-btn" onclick="closeForm()">×</span>
+
+<h2 style="text-align:center;">Enquiry Form</h2>
+
+<form action="https://formsubmit.co/vinayakmalode76@gmail.com" method="POST" class="contact-form">
+
+<input type="hidden" name="_captcha" value="false">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="text" name="phone" placeholder="Phone Number" required>
+
+<select name="course">
+<option>Select Course</option>
+<option>Python</option>
+<option>Data Science</option>
+<option>Software Testing</option>
+<option>Computer Course</option>
+</select>
+
+<textarea name="message" placeholder="Message" rows="3"></textarea>
+
+<button type="submit" class="submit-btn">Submit Enquiry</button>
+
+</form>
+
+</div>
+</div>
+
+<script>
+
+function toggle(id){
+document.getElementById(id).classList.toggle("show");
+}
+
+function openForm(){
+document.getElementById("popupForm").style.display="flex";
+}
+
+function closeForm(){
+document.getElementById("popupForm").style.display="none";
+}
+
+setTimeout(function(){
+document.getElementById("popupForm").style.display="flex";
+},10000);
+
+</script>
+
+{% endblock %}

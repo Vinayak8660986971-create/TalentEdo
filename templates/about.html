@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+    <link rel="stylesheet" href="enquiry-popup.css">
+    <h2>About Us</h2>
+
+    <p>
+        Welcome to <b>Talentedo Tech Skills training center</b>, a trusted center for quality education and skill development. We are committed to providing practical and industry-oriented training that helps students build successful careers.<br><br>
+        Our institute offers a wide range of courses including <b>Basic Computers, Advanced Computer Training, Programming and Professional Development Courses focussed on learning latest technologies  which fetches  job opportunities</b> . Our programs are designed to meet current industry requirements and help students gain real-world knowledge.<br><br>
+        We focus on <b>practical learning, experienced trainers, and student-friendly teaching methods</b> to ensure every student understands the concepts clearly. Whether you are a beginner or looking to upgrade your skills, we provide the right guidance and support.<br><br>
+        At <b>Talentedo</b>, our mission is to empower students with knowledge, confidence, and technical skills that open doors to better job opportunities.<br>
+    </p>
+
+    <p>
+        Our trainers have strong industry experience and focus on practical learning.
+    </p>
+    <script src="enquiry-popup.js"></script>
+</section>
+<a class="whatsapp-btn"
+   href="https://wa.me/91XXXXXXXXXX"
+   target="_blank">
+
+    WhatsApp
+
+</a>
+
+
+<!-- ENQUIRY BUTTON -->
+
+<button class="enquiry-btn" onclick="openForm()">
+
+    Enquiry
+
+</button>
+
+
+<!-- POPUP FORM -->
+
+<div id="popupForm" class="popup-overlay">
+
+    <div class="popup-box">
+
+        <span class="close-btn" onclick="closeForm()">×</span>
+
+        <h2 style="text-align:center;">Enquiry Form</h2>
+
+        <form
+            action="https://formsubmit.co/vinayakmalode76@gmail.com"
+            method="POST"
+            class="contact-form">
+
+            <input type="hidden" name="_captcha" value="false">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                required
+            >
+
+            <select name="course">
+
+                <option>Select Course</option>
+                <option>Python Full Stack</option>
+                <option>Data Science</option>
+                <option>Software Testing</option>
+                <option>Computer Course</option>
+
+            </select>
+
+            <textarea
+                name="message"
+                placeholder="Message"
+                rows="3"
+            ></textarea>
+
+            <button type="submit" class="submit-btn">
+
+                Submit Enquiry
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* OPEN POPUP */
+
+function openForm() {
+    document.getElementById("popupForm").style.display = "flex";
+}
+
+/* CLOSE POPUP */
+
+function closeForm() {
+    document.getElementById("popupForm").style.display = "none";
+}
+
+/* AUTO POPUP AFTER 10 SECONDS */
+
+setTimeout(function () {
+
+    document.getElementById("popupForm").style.display = "flex";
+
+}, 10000);
+
+</script>
+{% endblock %}

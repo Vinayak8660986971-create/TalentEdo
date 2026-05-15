@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="section">
+    <h2>Contact Us</h2>
+
+    
+    <p style="text-align: center;">
+        <b>Talentedo</b><br>
+        #38, 3rd Floor, Opp. Cult.fit, Chandralayout<br>
+        Vijaynagar, Bengaluru – 560040<br>
+        Phone: +91 8867852555<br>
+        Email: info@talentedo.com<br>
+    </p>
+    <p style="text-align: center;">
+        <b>Working Hours</b><br>
+        Monday - Saturday<br>
+        9:00AM - 6:00PM
+    </p>
+
+    <h2>Enquiry Form</h2>
+
+    <form action="https://formsubmit.co/vinayakmalode76@gmail.com" method="POST" class="contact-form">
+        <!-- To stop spam -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <select name="course">
+            <option>Python</option>
+            <option>Data Science</option>
+            <option>Software Testing</option>
+            <option>Computer Course</option>
+        </select>
+
+        <textarea name="message" placeholder="Message"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="section">
+    <link rel="stylesheet" href="enquiry-popup.css">
+    <h2>Admin Panel - Enquiries</h2>
+
+    <form method="GET">
+        <input type="text" name="search" placeholder="Search by name" value="{{ search }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <table class="admin-table">
+        <tr>
+            <th>ID</th><th>Name</th><th>Phone</th><th>Course</th><th>Message</th><th>Action</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td><a href="/delete/{{ row[0] }}" class="delete-btn">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script src="enquiry-popup.js"></script>
+</section>
+
+{% endblock %}
