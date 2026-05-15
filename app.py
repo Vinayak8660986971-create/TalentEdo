@@ -21,11 +21,11 @@ if not os.path.exists(UPLOAD_FOLDER):
 def get_cursor():
     """Creates a fresh MySQL connection each time."""
     db = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",          # XAMPP default
-        database="talentedo_db",
-        port=3306
+        host=os.getenv("MYSQLHOST"),
+        user=os.getenv("MYSQLUSER"),
+        password=os.getenv("MYSQLPASSWORD"),
+        database=os.getenv("MYSQLDATABASE"),
+        port=os.getenv("MYSQLPORT")
     )
     return db, db.cursor(buffered=True)
 
